@@ -48,8 +48,9 @@ contract CrowdFunding{
         require(block.timestamp > deadline && raisedAmount < target);
         require(contributers[msg.sender] > 0,"You are not elegible for refund broooo!");
         address payable user = payable(msg.sender);
-        contributers[msg.sender] = 0;
         user.transfer(contributers[msg.sender]);
+        contributers[msg.sender] = 0;
+        
         noofcontributers --;
     }
 
